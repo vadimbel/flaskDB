@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Login Page
+    </title>
+    <style>
+        /* define background for the page */
+        body {
+            background-repeat: no-repeat;
+            background-attached: fixed;
+            background-size: cover;
+            background-image: url({{ url_for('static', filename='background.jpg') }})
+        }
+        #login-title {
+            font-family: "Copperplate", Papyrus;
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            text-position: center;
+        }
+        label {
+            font-family: "Copperplate", Papyrus;
+            font-size: 25px;
+            margin: auto;
+            display: block;
+            text-align: center;
+            color: white;
+        }
+        .login-input{
+            background: #fff;
+            width: 340px;
+            height: 50px;
+            border: none;
+            outline: none:
+            padding: 0 25px;
+            border-radius: 25px 0 0 25px;
+            margin: auto;
+            display: block;
+            font-size: 20px;
+            font-family: "Copperplate", Papyrus;
+            font-weight: bold;
+        }
+        .submit {
+            border-radius: 0 25px 25px 0;
+            width: 150px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #ffc107;
+            font-size: 20px;
+            font-family: "Copperplate", Papyrus;
+            font-weight: bold;
+            margin: auto;
+            display: block;
+        }
+        .alert-container {
+            font-family: "Copperplate", Papyrus;
+            text-align: center;
+            font-size: 20px;
+            color: red;
+            text-position: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login" class="login-container">
+        <h1 id="login-title">Login</h1>
+        <form method="POST">
+            <label for="username">User Name :</label><br><br>
+            <input type="text" id="username" name="username" class="login-input"><br><br>
+            <label for="password">Password :</label><br>
+            <input type="text" id="Password" name="password" class="login-input"><br><br>
+            <input type="submit" value="Submit" class="submit">
+        </form>
+    </div>
+
+    <div class="alert-container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <h3>{{ msg }}</h3>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+</body>
+</html>
